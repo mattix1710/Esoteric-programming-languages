@@ -23,8 +23,11 @@
 \documentclass[fleqn,10pt]{SelfArx} % Document font size and equations flushed left
 
 \usepackage[polish]{babel} % Specify a different language here - english by default
-\usepackage[utf8]{inputenc} % W celu dekodowania polskich znaków
+\usepackage[utf8]{inputenc} 	% W celu dekodowania polskich znaków
 \usepackage[T1]{fontenc}
+%\usepackage{polski}
+
+\usepackage[bottom]{footmisc}	% Używamy, by stopka zawsze była na samym dole strony
 
 \usepackage{lipsum} % Required to insert dummy text. To be removed otherwise
 
@@ -64,7 +67,7 @@
 %	ARTICLE INFORMATION
 %----------------------------------------------------------------------------------------
 
-\JournalInfo{Politechnika Poznańska, Poznań, 27.06.2022} % Journal information
+\JournalInfo{Politechnika Poznańska, Poznań, \today} % Journal information
 \Archive{Artykuł przeglądowy} % Additional notes (e.g. copyright, DOI, review/research article)
 
 \PaperTitle{Przegląd ezoterycznych języków programowania} % Article title
@@ -76,10 +79,17 @@
 \newcommand{\keywordname}{Słowa kluczowe} % Defines the keywords heading name
 
 %----------------------------------------------------------------------------------------
-%	ABSTRACT
+%	ABSTRACT - streszczenie
 %----------------------------------------------------------------------------------------
 
-\Abstract{}
+\Abstract{
+	Istnieje pewna grupa języków programowania zwana językami ezoterycznymi (ang. \textbf{\textit{esolang}}). \textit{Są one tworzone w celu badania i demonstracji niekonwencjonalnych technik programistycznych oraz metod programowania.
+	Nie są one natomiast przeznaczone do pisania rzeczywistych aplikacji.}\cite{Wiki:EsotericPL}
+	Ich twórcy skupiają się na dążeniu do stworzenia języka \textit{dziwnego} - \textbf{Malbolge}, \textit{minimalistycznego} - \textbf{Brainfuck}, \textit{o danym motywie} - \textbf{Shakespeare}, czy stworzonego dla \textit{zwykłego żartu} - \textbf{Ook!}.
+	Zostało przedstawione tylko kilka przykładów języków oraz ich zastosowania, a w dalszej części artykułu poruszę kwestie związane z ich genezą,
+	opiszę wymienione języki oraz zagłębię się w temat celów, jakimi kierowali się programiści podczas ich tworzenia. 
+	Dodatkowo przedstawię semantykę tych języków okraszoną przykładowymi programami napisanymi za ich pomocą.
+}
 
 %----------------------------------------------------------------------------------------
 
@@ -95,14 +105,45 @@
 %	ARTICLE CONTENTS
 %----------------------------------------------------------------------------------------
 
-\section*{Introduction} % The \section*{} command stops section numbering
+\section*{Wstęp} % The \section*{} command stops section numbering
 
-\addcontentsline{toc}{section}{Introduction} % Adds this section to the table of contents
-
-\lipsum[1-3] % Dummy text
- and some mathematics $\cos\pi=-1$ and $\alpha$ in the text\footnote{And some mathematics $\cos\pi=-1$ and $\alpha$ in the text.}.
+\addcontentsline{toc}{section}{Wstęp} % Adds this section to the table of contents
+	Opisując pojęcie \textit{języka programowania}, większość osób wyobraża sobie je jako narzędzie,
+	zbiór zasad określających dane działania. Kod taki jest następnie kompilowany \textit{(np. C, C++)}, 
+	bądź interpretowany \textit{(np. Python)} przez komputer, który wykonuje określone instrukcje zawarte w kodzie.
+	Jednymi z najbardziej popularnych języków pozwalających nam na takie działania są: \underline{Python, Java, C, C++, JavaScript, C\#, R, Go}
+	\cite{IEEESpectrum:popularLang2021}\footnote{wybór 8 najbardziej popularnych języków programowania w 2021 roku według serwisu IEEE spectrum:
+	\url{https://spectrum.ieee.org/top-programming-languages-2021}}.
+	Są to języki proste w swoim użyciu, zawierające bogatą i szeroko opisaną składnię językową. 
+	Nie każdy język natomiast nadaje się do przetwarzania pewnych problemów, z którymi mierzą się programiści. 
+	Program napisany w jednym języku może się wykonywać szybciej niż w drugim. To samo tyczy się objętości samych programów, 
+	ich kompilatorów, czy samego kodu źródłowego. Dodatkowo należy mieć też na uwadze fakt, 
+	iż jedne języki programowania są bardziej odpowiednie do rozwiązywania określonych zadań, konkretnych problemów, 
+	w porównaniu do innych tworów.
+	\indent Dobrym przykładem byłoby tutaj przywołanie grupy języków R, SQL i Matlab w opozycji do C, C++ i Javy. 
+	Pierwsza grupa to języki przeznaczenia specjalistycznego, wykorzystywane do wszelakich obliczeń statystycznych, 
+	czy algorytmicznych, reprezentacji graficznej wyników, czy wykonywania operacji bazodanowych. 
+	Druga grupa są to języki ogólnego przeznaczenia, które pozwalają na stworzenie wysokowydajnych aplikacji, istniejące od wielu lat. 
+	Ich niewątpliwą zaletą jest również fakt istnienia ogromnej bazy dokumentacji oraz aplikacji napisanych za pomocą tych języków. 
+	\textit{W rzeczy samej, nawet znacząca część języka Python, jak i jego dokumentacji jest napisana w języku C z powodów wydajnościowych}
+	\cite{IEEESpectrum:popularLang2021}\footnote{„Indeed, significant parts of Python itself and its libraries are written in C for performance reasons.” ~ \url{https://spectrum.ieee.org/top-programming-languages-2021}}.
 
 %------------------------------------------------
+
+\section{Czas na języki ezoteryczne}
+	W momencie, gdy języki programowania są projektowane w celu produktywnego i efektywnego
+	projektowania i budowania aplikacji, \textbf{języki ezoteryczne} tworzone są w innych celach: Mogą one reprezentować pewne idee \textbf{proof-of-concept},
+	demonstrować \textbf{minimalizację} składni języka, który będzie nadal używalny, zachowując jednocześnie \textbf{uniwersalność}.
+	Mogą one pomóc w udowodnieniu pewnych konceptów matematycznych, czy ustaleniu granic analiz złożoności.
+	Proces projektowania języków ezoterycznych można zdefiniować jako operacja artystyczna,
+	będąca wynikiem, a wręcz ekspresją ludzkiego intelektu, dowcipu, czy zmysłu \textcolor{red}{estetyki}.
+	Mogą być również stworzone w celu podjęcia się swego rodzaju rywalizacji między programistami, bądź wyzwania, czy to dla siebie, czy dla hipotetycznego użytkownika.
+	Istnieje jeszcze kolejna grupa języków ezoterycznych - języki prześmiewcze, napisanych ku uciesze autorów, użytkowników, czy choćby czytelników ich specyfikacji.\cite{morr2015esoteric}
+	Wszystkie wymienione właściwości, jak i charakterystyki języków ezoterycznych wywołują chęć przyjrzenia się im dokładniej oraz poznania zamiarów ekscentrycznych programistów stojących za ich powstaniem.
+
+%------------------------------------------------
+% TODO: rodzaje języków? (na WIKI jest rozpiska)
+
 
 \section{Methods}
 
