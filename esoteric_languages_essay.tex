@@ -28,6 +28,23 @@
 %\usepackage{polski}
 
 \usepackage[bottom]{footmisc}	% Używamy, by stopka zawsze była na samym dole strony
+\usepackage{changepage}			% dla customowych marginesów
+
+\usepackage{listings}
+\usepackage[most]{tcolorbox}
+\usepackage{inconsolata}
+
+\newtcblisting[auto counter]{sexylisting}[2][]{sharp corners, 
+    fonttitle=\bfseries, colframe=airforceblue, listing only, 
+    listing options={basicstyle=\small\ttfamily,language=C++, numbers=left, 
+					numberstyle=\scriptsize,   
+    				xleftmargin=0.6em},
+    title=Listing \thetcbcounter: #2, #1}
+
+\usepackage{graphicx} % Required for including images
+\graphicspath{{Figures/}{./}} % Specifies where to look for included images (trailing slash required)
+
+\usepackage{float} % Allows more precisely positioning floats e.g. \begin{figure}[H]
 
 \usepackage{lipsum} % Required to insert dummy text. To be removed otherwise
 
@@ -44,6 +61,8 @@
 
 \definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
 \definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+
+\definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
 
 %----------------------------------------------------------------------------------------
 %	HYPERLINKS
@@ -111,9 +130,9 @@
 	Opisując pojęcie \textit{języka programowania}, większość osób wyobraża sobie je jako narzędzie,
 	zbiór zasad określających dane działania. Kod taki jest następnie kompilowany \textit{(np. C, C++)}, 
 	bądź interpretowany \textit{(np. Python)} przez komputer, który wykonuje określone instrukcje zawarte w kodzie.
-	Jednymi z najbardziej popularnych języków pozwalających nam na takie działania są: \underline{Python, Java, C, C++, JavaScript, C\#, R, Go}
+	Jednymi z najbardziej popularnych języków pozwalających nam na takie działania są: \underline{Python, Java, C, C++, JavaScript,} \underline{C\#, R, Go} 
 	\cite{IEEESpectrum:popularLang2021}\footnote{wybór 8 najbardziej popularnych języków programowania w 2021 roku według serwisu IEEE spectrum:
-	\url{https://spectrum.ieee.org/top-programming-languages-2021}}.
+		\url{https://spectrum.ieee.org/top-programming-languages-2021}}.
 	Są to języki proste w swoim użyciu, zawierające bogatą i szeroko opisaną składnię językową. 
 	Nie każdy język natomiast nadaje się do przetwarzania pewnych problemów, z którymi mierzą się programiści. 
 	Program napisany w jednym języku może się wykonywać szybciej niż w drugim. To samo tyczy się objętości samych programów, 
@@ -131,7 +150,8 @@
 %------------------------------------------------
 
 \section{Czas na języki ezoteryczne}
-	W momencie, gdy języki programowania są projektowane w celu produktywnego i efektywnego
+\subsection{Pojęcie języka ezoterycznego}
+	W przeciwieństwie do języków programowania tworzonych w celu produktywnego i efektywnego
 	projektowania i budowania aplikacji, \textbf{języki ezoteryczne} tworzone są w innych celach: Mogą one reprezentować pewne idee \textbf{proof-of-concept},
 	demonstrować \textbf{minimalizację} składni języka, który będzie nadal używalny, zachowując jednocześnie \textbf{uniwersalność}.
 	Mogą one pomóc w udowodnieniu pewnych konceptów matematycznych, czy ustaleniu granic analiz złożoności.
@@ -142,7 +162,60 @@
 	Wszystkie wymienione właściwości, jak i charakterystyki języków ezoterycznych wywołują chęć przyjrzenia się im dokładniej oraz poznania zamiarów ekscentrycznych programistów stojących za ich powstaniem.
 
 %------------------------------------------------
-% TODO: rodzaje języków? (na WIKI jest rozpiska)
+% TODO: GENEZA języków eso...
+
+\subsection{Geneza powstania języków ezoterycznych}
+Za najstarszy znany język ezoteryczny uważa się \textbf{\textit{INTERCAL}} stworzony w \textbf{1972} roku 
+przez \underline{Donalda R. Woodsa} oraz \underline{Jamesa M. Lyona}.
+
+\subsubsection{Prehistoria języków ezoterycznych}
+W historii informatyki można natomiast doszukać się informacji o językach, 
+które miały wspólną genezę ze współczesnymi językami
+ezoterycznymi. Co natomiast odróżniało je od nowoczesnych post-INTERCAL'owych języków ezoterycznych, 
+tworzone one były w celach profesjonalnych i całkowicie użytkowych.
+Przypatrzmy się przykładowo językowi \textbf{\textit{EXPLOR}}: 
+\begin{adjustwidth}{1cm}{0cm}
+	Jego główna idea polegała na wykonywaniu się kodu czysto probabilistycznie - każda poszczególna instrukcja ma pewne \textit{prawdopodobieństwo}, 
+	które definiuje częstość jej wykonania. W dodatku podczas pisania kodu za jego pomocą nie ma możliwości użycia
+	\textit{zmiennych} - każda instrukcja bazuje na aktualnej wartości stanu wyświetlacza, bądź na innych instrukcjach.
+	\\\textcolor{green}{(!) Ciekawostka:} języka tego używało wielu artystów, by móc generować obrazy używane do animacji swoich ekspresji, 
+	jak i również był nawet używany przez pewien czas jako narzędzie do nauki \textsc{grafiki komputerowej} zarówno artystów, jak i dzieci.
+	Przykładowy program napisany w języku EXPLOR wygląda tak:
+\end{adjustwidth}
+\begin{sexylisting}{EXPLOR code}
+  dim    (1,1)    (512,384)
+  wbt    (1,1)    (abc,012,)
+  bxl    (1,1)    40(20,20,45,45,10,10,50,38)1(a.)
+ax axl   (1,1)    4,news,01,1(.01)
+  axl    (1,1)    4,news,12,1(.12)
+  axl    (1,1)    4,news,ab,1(.ab)
+  axl    (1,1)    4,news,bc,1(.bc)
+  xl     (1,1)    1(.012abac0)
+  camera (1,1)    1
+cm goto  (x,29,1) ax
+\end{sexylisting}
+	Według reguł języka, składnia instrukcji wygląda następująco:
+	\begin{center}
+		\textsc{instrukcja prawdopodobieństwo argumenty}
+	\end{center}
+\begin{figure}[H] % [H] forces the figure to be placed exactly where it appears in the text
+	\centering % Horizontally center the figure
+	\includegraphics[width=0.45\textwidth]{Figures/Explor_example.png} % Include the figure
+	\caption{Obraz wygenerowany za pomocą przykładowego kodu zaprezentowanego na \textsc{listingu 1}}
+\end{figure}
+
+\subsubsection{Prehistoria języków ezoterycznych - cellular automata}
+Do języków ezoterycznych zaliczany jest również dział tzw. \textbf{\textit{automatów komórkowych}}.
+Mogą być one uznawane za swego rodzaju języki ezoteryczne, a przynajmniej w sensie ogólnym, jakim określamy całą tematyczną grupę.
+Wiele konstruktów określanych jako \textit{automaty komórkowe} jest jednocześnie nazywanymi ezoterycznymi.
+Dzięki takiemu założeniu możemy przyjąć, że automaty stworzony na początku lat 1950 - opublikowany w \textbf{1966} roku \underline{"29-cio stanowy automat" Von Neumanna}
+oraz opublikowana w \textbf{1970} roku \underline{"Gra w życie" Johna Conwaya} są jednocześnie jednymi z pierwszych \textbf{\textit{prehistorycznych języków ezoterycznych}}!
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% new section - może coś w stylu - OPIS RODZAJÓW wraz z przykładami - te języki, które są najpopularniejsze etc.
+% TODO: opisać INTERCAL
+
 
 
 \section{Methods}
