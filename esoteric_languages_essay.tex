@@ -165,7 +165,7 @@
 % TODO: GENEZA języków eso...
 
 \subsection{Geneza powstania języków ezoterycznych}
-Za najstarszy znany język ezoteryczny uważa się \textbf{\textit{INTERCAL}} stworzony w \textbf{1972} roku 
+Za najstarszy znany język ezoteryczny uważa się \hypertarget{oldestLang}{\textbf{\textit{INTERCAL}}} stworzony w \textbf{1972} roku 
 przez \underline{Donalda R. Woodsa} oraz \underline{Jamesa M. Lyona}.
 
 \subsubsection{Prehistoria języków ezoterycznych}
@@ -180,8 +180,8 @@ Przypatrzmy się przykładowo językowi \textbf{\textit{EXPLOR}}:
 	\textit{zmiennych} - każda instrukcja bazuje na aktualnej wartości stanu wyświetlacza, bądź na innych instrukcjach.
 	\\\textcolor{green}{(!) Ciekawostka:} języka tego używało wielu artystów, by móc generować obrazy używane do animacji swoich ekspresji, 
 	jak i również był nawet używany przez pewien czas jako narzędzie do nauki \textsc{grafiki komputerowej} zarówno artystów, jak i dzieci.
-	Przykładowy program napisany w języku EXPLOR wygląda tak:
 \end{adjustwidth}
+Przykładowy program napisany w języku EXPLOR wygląda tak:
 \begin{sexylisting}{EXPLOR code}
   dim    (1,1)    (512,384)
   wbt    (1,1)    (abc,012,)
@@ -208,7 +208,15 @@ cm goto  (x,29,1) ax
 Do języków ezoterycznych zaliczany jest również dział tzw. \textbf{\textit{automatów komórkowych}}.
 Mogą być one uznawane za swego rodzaju języki ezoteryczne, a przynajmniej w sensie ogólnym, jakim określamy całą tematyczną grupę.
 Wiele konstruktów określanych jako \textit{automaty komórkowe} jest jednocześnie nazywanymi ezoterycznymi.
-Dzięki takiemu założeniu możemy przyjąć, że automaty stworzony na początku lat 1950 - opublikowany w \textbf{1966} roku \underline{"29-cio stanowy automat" Von Neumanna}
+Oznacza to nic innego jak fakt, iż mogą one (w teorii) rozwiązyć wszelakie (możliwe do rozwiązania) 
+operacje i problemy matematyczne, między innymi \textit{wyliczanie liczby pi} i tak dalej. 
+W związku z tym mogą być one uznawane za \textbf{\underline{zupełne} \underline{w sensie Turinga}}.
+\begin{adjustwidth}{1cm}{0cm} 
+	$\hookrightarrow$ Dowolny zestaw reguł i obiektów, który może być użyty do symulacji \textbf{\textit{Uniwersalnej Maszyny Turinga}}
+	jest uważany za \textit{kompletny w sensie Turinga}. Wszystkie modele zupełne w sensie Turinga są sobie tożsame, 
+	w takim sensie, że korzystają one z tego samego zestawu funkcji do wyliczeń.\cite{IEEEXplore:TuringCompletnessCivilization}
+\end{adjustwidth}
+Dzięki takiemu założeniu możemy przyjąć, że automaty: stworzony na początku lat 1950 - opublikowany w \textbf{1966} roku \underline{"29-cio stanowy} \underline{automat" Von Neumanna}
 oraz opublikowana w \textbf{1970} roku \underline{"Gra w życie" Johna Conwaya} są jednocześnie jednymi z pierwszych \textbf{\textit{prehistorycznych języków ezoterycznych}}!
 
 
@@ -216,7 +224,39 @@ oraz opublikowana w \textbf{1970} roku \underline{"Gra w życie" Johna Conwaya} 
 % new section - może coś w stylu - OPIS RODZAJÓW wraz z przykładami - te języki, które są najpopularniejsze etc.
 % TODO: opisać INTERCAL
 
+\section{Rodzaje języków ezoterycznych \cite{esolangWiki:esolangs}}	%rodzaje celów (proste, joke, niemożliwe do pisania etc.)
+										% + podczas Befunge opisać rodzaj języków Funge.
 
+Istnieje wiele powodów przemawiających za stworzeniem języka ezoterycznego.
+Wiadomym już jest, że najważniejszą ich właściwością, odróżniającą je od zwykłych języków,
+jest fakt, iż nie są one przeznaczone do poważnego, profesjonalnego użytkowania i funckjonowania.
+Możemy natomiast wyróżnić kilka głównych przyczyn, którymi kierują się autorzy w trakcie ich konstruowania.
+Wiele języków zostanie tutaj wymienionych, a te \underline{podkreślone} zostaną w późniejszej części pracy dogłębniej wytłumaczone:
+\begin{itemize}
+	\item \textbf{Minimalizm} - popularnym wyborem podczas projektowania danego języka jest stworzenie zestawu jak najmniejszej liczby instrukcji - 
+	uproszczone w pewnych aspektach do granic możliwości.
+	Języki tego rodzaju, jeśli są \textit{Turing-zupełne}, określane są mianem \textit{grzęzawiska Turinga}:
+	"Strzeżcie się grzęzawiska Turinga, w którym wszystko jest możliwe, ale nic nie jest łatwe"\cite{perlisAlan:epigrams}
+	Do minimalistycznych języków zaliczyć można \underline{\textbf{brainfuck}}, \textbf{OISC} oraz \textbf{Lazy K}.
+	\item \textbf{Nowe koncepty} - wśród języków ezoterycznych bardzo popularnym podejściem w trakcie ich projektowania jest 
+	wynajdowanie nowych, alternatywnych sposobów na reprezentację kodu. Dobrymi przykładami tego rodzaju języków są \underline{\textbf{Befunge}}, \textbf{Thue} oraz \textbf{Unlambda}.
+	\item \textbf{Dziwność} - niektóre języki tworzone są po to, by uzyskać twór dziwny i trudny do pisania w nim kodu.
+	Sztandarowym przykładem byłby tutaj język, uznawany za pionerski wśród języków ezoterycznych - \hyperlink{oldestLang}{\underline{\textbf{INTERCAL}}} - stworzony głównie z powodu,
+	by być tak inny jak to możliwe od "normalnych" języków programowania, mimo wielu podobieństw między nim, a konwencjonalnymi językami.
+	Drugim bardzo interesującym przypadkiem jest \underline{\textbf{Malbolge}}, który został stworzony po to, by być niemal niemożliwym do użytkowania.
+	\item \textbf{Tematyczność} - są to języki bazujące na pewnym, wybranym przez twórcę temacie, niezwiązanym z informatyką.
+	Mogą być to języki takie jak \textbf{var'aq} - bazujący na fikcyjnym języku Klingońskim; \underline{\textbf{Shakespeare}} - pisany w formie utworów scenicznych tytułowego angielskiego pisarza;
+	oraz \underline{\textbf{Chef}}, którego kod wygląda jak przepisy kulinarne!
+	\item \textbf{Zwięzłość} - wiele języków dąży do spełnenia pojęcia "im mniej kodu, tym lepiej". Tego rodzaju języki znane są jako \textit{Golfing languages} i bardzo często używane
+	są w konkurencji \textbf{code golf}, której celem jest rozwiązanie danych problemów programistycznych za pomocą jak najmniejszej liczby znaków/bajtów, jak to jest możliwe.
+	Kategoria ta obfituje w takie języki jak \textbf{CJam}, \textbf{Pyth}, czy \textbf{GolfScript}.
+	\item \textbf{Dowcip} - języki tworzone typowo dla swego rodzaju żartu. Tym niemniej, wiele z nich jest zupełnie funkcjonalnych w celach programistycznych.
+	Są to między innymi \textbf{l33k}, \underline{\textbf{Ook!}}, jak i również oba wywodzące się z \textit{brainfuck'a} \underline{\textbf{Moanfuck}} i \underline{\textbf{Fuckfuck}}.
+	\item \textbf{Nieczytelność} - zaprojektowane w taki sposób, by odczytywanie kodu było w jak największym stopniu utrudnione, w przeciwieństwie do bycia ciężkimi do pisania, czy zrozumienia.
+	Doskonałym przykładem jest tutaj tytułowy \underline{\textbf{Unreadable}}. Bardzo ciekawym przypadkiem jest również wpisujący się w te ramy \underline{\textbf{Whitespace}}.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Methods}
 
