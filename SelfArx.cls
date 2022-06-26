@@ -169,12 +169,12 @@
 	{\ \titlerule*[.5pc]{.}\ \thecontentspage}
 	[]
 
-\titlecontents*{subsubsection}[\tocsep]
+\titlecontents{subsubsection}[\tocsep]
 	{\footnotesize\sffamily}
 	{}
 	{}
 	{}
-	[\ \textbullet\ ]
+	[]
 
 %----------------------------------------------------------------------------------------
 %	MULTIPLE AUTHOR SET
